@@ -1,10 +1,10 @@
 import type { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
-import { generateToken } from "../Middelware/authmiddleware.ts";
+import { generateToken } from "../Middelware/authmiddleware";
 import { eq } from "drizzle-orm";
-import { usersTable } from "../drizzle/src/db/schema.ts";
-import { db } from "../drizzle/index.ts";
-import supabase from "../config/supabaseClient.ts";
+import { usersTable } from "../drizzle/src/db/schema";
+import { db } from "../drizzle/index";
+import supabase from "../config/supabaseClient";
 
 // export const login = async (
 //     req: Request,

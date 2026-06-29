@@ -1,5 +1,5 @@
-import { fieldsTable, sectionsTable } from "../drizzle/src/db/schema.ts";
-import { db } from "../drizzle/index.ts";
+import { fieldsTable, sectionsTable } from "../drizzle/src/db/schema";
+import { db } from "../drizzle/index";
 import { eq } from "drizzle-orm";
 
 
@@ -226,4 +226,4 @@ export async function deleteField(id: string) {
       message: error instanceof Error ? error.message : "Failed to delete field",
     };
   }
-}
+}

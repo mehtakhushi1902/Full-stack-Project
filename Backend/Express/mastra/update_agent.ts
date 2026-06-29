@@ -1,6 +1,6 @@
 import { Agent } from "@mastra/core/agent";
-import { model } from "./routerAgent.ts";
-import { updateSectionTool, updateFieldTool } from "./tools.ts";
+import { model } from "./routerAgent";
+import { updateSectionTool, updateFieldTool } from "./tools";
 
 export const UpdateAgent = new Agent({
     id: "update-agent",

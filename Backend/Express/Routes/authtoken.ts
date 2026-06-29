@@ -1,8 +1,8 @@
 import { Router } from "express";
 
 
-import { generateToken } from "../Middelware/authmiddleware.ts";
-import { login, register } from "../Controller/auth.ts";
+import { generateToken } from "../Middelware/authmiddleware";
+import { login, register } from "../Controller/auth";
 
 
 const router = Router();

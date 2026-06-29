@@ -1,12 +1,12 @@
 
 import { Router } from "express";
 
-import { UpdateProject, GetProjects, createProject } from "../Controller/project.ts";
+import { UpdateProject, GetProjects, createProject } from "../Controller/project";
 
-import { authMiddleware, generateToken } from "../Middelware/authmiddleware.ts";
+import { authMiddleware, generateToken } from "../Middelware/authmiddleware";
 
-import { rlsMiddleware } from "../Middelware/rlsmiddelware.ts";
-import { supabaseAuthMiddleware } from "../Middelware/supabaseAuthMiddleware.ts";
+import { rlsMiddleware } from "../Middelware/rlsmiddelware";
+import { supabaseAuthMiddleware } from "../Middelware/supabaseAuthMiddleware";
 
 const router = Router();
 

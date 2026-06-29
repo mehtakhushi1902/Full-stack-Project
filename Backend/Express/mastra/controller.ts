@@ -1,8 +1,8 @@
-import { routerAgent } from "./routerAgent.ts";
-import { CreateAgent } from "./create_agent.ts";
-import { UpdateAgent } from "./update_agent.ts";
-import { DeleteAgent } from "./delete_agent.ts";
-import { QueryAgent } from "./query_agent.ts";
+import { routerAgent } from "./routerAgent";
+import { CreateAgent } from "./create_agent";
+import { UpdateAgent } from "./update_agent";
+import { DeleteAgent } from "./delete_agent";
+import { QueryAgent } from "./query_agent";
 import { type Request, type Response } from "express";
 
 const chatController = async (req: Request, res: Response) => {

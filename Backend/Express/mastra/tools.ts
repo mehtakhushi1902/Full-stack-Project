@@ -1,6 +1,6 @@
 import { createTool } from "@mastra/core/tools";
 import { z } from "zod";
-import { createField, createSection, getFields, getSections, updateField, deleteField, updateSection, deleteSection } from "./service_layer.ts";
+import { createField, createSection, getFields, getSections, updateField, deleteField, updateSection, deleteSection } from "./service_layer";
 
 export const createSectionTool = createTool({
     id: "create-section",

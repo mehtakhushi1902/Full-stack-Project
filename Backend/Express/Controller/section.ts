@@ -1,7 +1,7 @@
 import type { Request, Response } from "express";
 import { eq } from "drizzle-orm";
-import { sectionsTable } from "../drizzle/src/db/schema.ts";
-import { db } from "../drizzle/index.ts";
+import { sectionsTable } from "../drizzle/src/db/schema";
+import { db } from "../drizzle/index";
 import { randomUUID } from "crypto";
 
 

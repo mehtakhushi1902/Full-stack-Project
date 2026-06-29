@@ -1,10 +1,10 @@
 import dotenv from "dotenv";
 dotenv.config();
-import { routerAgent } from "../mastra/routerAgent.ts";
-import { CreateAgent } from "../mastra/create_agent.ts";
-import { UpdateAgent } from "../mastra/update_agent.ts";
-import { DeleteAgent } from "../mastra/delete_agent.ts";
-import { QueryAgent } from "../mastra/query_agent.ts";
+import { routerAgent } from "../mastra/routerAgent";
+import { CreateAgent } from "../mastra/create_agent";
+import { UpdateAgent } from "../mastra/update_agent";
+import { DeleteAgent } from "../mastra/delete_agent";
+import { QueryAgent } from "../mastra/query_agent";
 
 async function runTest(prompt: string) {
     console.log(`\n========================================`);

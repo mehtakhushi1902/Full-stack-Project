@@ -4,12 +4,11 @@
   "description": "",
   "license": "ISC",
   "author": "",
-  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "start": "node --watch index.ts",
+    "start": "node dist/index.js",
     "db:generate": "npx drizzle-kit generate",
     "db:migrate": "npx drizzle-kit migrate",
     "db:push": "npx drizzle-kit push"

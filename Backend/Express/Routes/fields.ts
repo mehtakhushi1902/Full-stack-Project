@@ -7,7 +7,7 @@ import {
     deleteField,
     getAllFieldsBySectionId,
     reorderFields,
-} from "../Controller/fields.ts";
+} from "../Controller/fields";
 
 const router = Router();
 

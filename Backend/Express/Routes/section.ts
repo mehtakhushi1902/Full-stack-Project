@@ -6,7 +6,7 @@ import {
     updateSection,
     deleteSection,
     reorderSections,
-} from "../Controller/section.ts";
+} from "../Controller/section";
 
 const router = Router();
 

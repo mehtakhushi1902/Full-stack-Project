@@ -1,8 +1,8 @@
 
 import type { Request, Response } from "express";
-import { projectsTable } from "../drizzle/src/db/schema.ts";
+import { projectsTable } from "../drizzle/src/db/schema";
 import { eq } from "drizzle-orm";
-import supabase from "../config/supabaseClient.ts";
+import supabase from "../config/supabaseClient";
 
 
 export const UpdateProject = async (
