@@ -6,3 +6,5 @@
 
 /Express/.env
 /Hono/.env
+
+/Express/dist
