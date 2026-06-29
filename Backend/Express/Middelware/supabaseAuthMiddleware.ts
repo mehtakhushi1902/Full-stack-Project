@@ -1,5 +1,5 @@
 import type { Request, Response, NextFunction } from "express";
-import supabase from "../config/supabaseClient";
+import supabase from "../config/supabaseClient.js";
 
 export const supabaseAuthMiddleware = async (req: Request, res: Response, next: NextFunction) => {
     try {

@@ -1,6 +1,6 @@
 import { Agent } from "@mastra/core/agent";
-import { model } from "./routerAgent";
-import { getSectionTool, getFieldTool } from "./tools";
+import { model } from "./routerAgent.js";
+import { getSectionTool, getFieldTool } from "./tools.js";
 
 export const QueryAgent = new Agent({
     id: "query-agent",

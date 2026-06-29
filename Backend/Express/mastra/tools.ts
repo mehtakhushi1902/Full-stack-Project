@@ -1,6 +1,6 @@
 import { createTool } from "@mastra/core/tools";
 import { z } from "zod";
-import { createField, createSection, getFields, getSections, updateField, deleteField, updateSection, deleteSection } from "./service_layer";
+import { createField, createSection, getFields, getSections, updateField, deleteField, updateSection, deleteSection } from "./service_layer.js";
 
 export const createSectionTool = createTool({
     id: "create-section",
@@ -12,7 +12,7 @@ export const createSectionTool = createTool({
         description: z.string().optional(),
     }),
 
-    execute: async (data) => {
+    execute: async (data: any) => {
         return await createSection(data);
     },
 });
@@ -37,7 +37,7 @@ export const createFieldTool = createTool({
         options: z.array(z.string()).optional(),
     }),
 
-    execute: async (data) => {
+    execute: async (data: any) => {
         console.log("Data in fields for section", data)
         const sections = await getSections();
         if (sections.success === false) {
@@ -97,7 +97,7 @@ export const updateSectionTool = createTool({
         description: z.string().nullable().optional(),
         order: z.number().nullable().optional(),
     }),
-    execute: async (data) => {
+    execute: async (data: any) => {
         const sections = await getSections();
         if (sections.success === false) {
             throw new Error(sections.message);
@@ -122,7 +122,7 @@ export const deleteSectionTool = createTool({
     inputSchema: z.object({
         title: z.string().min(1, "Section title is required"),
     }),
-    execute: async (data) => {
+    execute: async (data: any) => {
         const sections = await getSections();
         if (sections.success === false) {
             throw new Error(sections.message);
@@ -158,7 +158,7 @@ export const updateFieldTool = createTool({
         required: z.boolean().nullable().optional(),
         options: z.array(z.string()).nullable().optional(),
     }),
-    execute: async (data) => {
+    execute: async (data: any) => {
         const sections = await getSections();
         if (sections.success === false) {
             throw new Error(sections.message);
@@ -211,7 +211,7 @@ export const deleteFieldTool = createTool({
         label: z.string().min(1, "Field label to delete is required"),
         sectionName: z.string().min(1, "Section Name where field resides is required"),
     }),
-    execute: async (data) => {
+    execute: async (data: any) => {
         // Find current section
         const sections = await getSections();
         if (sections.success === false) {

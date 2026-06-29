@@ -1,6 +1,6 @@
 import { Agent } from "@mastra/core/agent";
-import { createFieldTool, createSectionTool, getFieldTool, getSectionTool } from "./tools";
-import { model } from "./routerAgent";
+import { createFieldTool, createSectionTool, getFieldTool, getSectionTool } from "./tools.js";
+import { model } from "./routerAgent.js";
 // import { openai } from "@ai-sdk/openai";
 // import { google } from "@ai-sdk/google";
 

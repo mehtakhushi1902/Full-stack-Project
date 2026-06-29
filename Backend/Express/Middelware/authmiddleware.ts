@@ -1,9 +1,9 @@
 import type { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
-import { usersTable } from "../drizzle/src/db/schema";
+import { usersTable } from "../drizzle/src/db/schema.js";
 import { eq } from "drizzle-orm";
 
-import { db } from "../drizzle/index";
+import { db } from "../drizzle/index.js";
 
 interface JwtPayload {
     sub: string;

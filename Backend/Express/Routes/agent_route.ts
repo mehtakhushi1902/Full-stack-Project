@@ -1,5 +1,5 @@
 import { Router } from "express";
-import chatController from "../mastra/controller";
+import chatController from "../mastra/controller.js";
 
 const router = Router();
 router.post(

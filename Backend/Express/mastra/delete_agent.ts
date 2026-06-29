@@ -1,6 +1,6 @@
 import { Agent } from "@mastra/core/agent";
-import { model } from "./routerAgent";
-import { deleteSectionTool, deleteFieldTool } from "./tools";
+import { model } from "./routerAgent.js";
+import { deleteSectionTool, deleteFieldTool } from "./tools.js";
 
 export const DeleteAgent = new Agent({
     id: "delete-agent",

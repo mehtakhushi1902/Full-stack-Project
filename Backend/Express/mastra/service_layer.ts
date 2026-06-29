@@ -1,5 +1,5 @@
-import { fieldsTable, sectionsTable } from "../drizzle/src/db/schema";
-import { db } from "../drizzle/index";
+import { fieldsTable, sectionsTable } from "../drizzle/src/db/schema.js";
+import { db } from "../drizzle/index.js";
 import { eq } from "drizzle-orm";
 
 

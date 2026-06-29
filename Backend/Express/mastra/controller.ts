@@ -1,8 +1,8 @@
-import { routerAgent } from "./routerAgent";
-import { CreateAgent } from "./create_agent";
-import { UpdateAgent } from "./update_agent";
-import { DeleteAgent } from "./delete_agent";
-import { QueryAgent } from "./query_agent";
+import { routerAgent } from "./routerAgent.js";
+import { CreateAgent } from "./create_agent.js";
+import { UpdateAgent } from "./update_agent.js";
+import { DeleteAgent } from "./delete_agent.js";
+import { QueryAgent } from "./query_agent.js";
 import { type Request, type Response } from "express";
 
 type AnyAgent = typeof CreateAgent | typeof UpdateAgent | typeof DeleteAgent | typeof QueryAgent;

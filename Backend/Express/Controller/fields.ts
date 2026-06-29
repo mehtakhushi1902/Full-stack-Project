@@ -1,7 +1,7 @@
 import { eq, asc } from "drizzle-orm";
 import type { Request, Response } from "express";
-import { fieldsTable } from "../drizzle/src/db/schema";
-import { db } from "../drizzle/index";
+import { fieldsTable } from "../drizzle/src/db/schema.js";
+import { db } from "../drizzle/index.js";
 import { randomUUID } from "crypto";
 
 export const getFields = async (req: Request, res: Response) => {

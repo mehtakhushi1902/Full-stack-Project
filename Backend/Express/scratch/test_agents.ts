@@ -1,10 +1,10 @@
 import dotenv from "dotenv";
 dotenv.config();
-import { routerAgent } from "../mastra/routerAgent";
-import { CreateAgent } from "../mastra/create_agent";
-import { UpdateAgent } from "../mastra/update_agent";
-import { DeleteAgent } from "../mastra/delete_agent";
-import { QueryAgent } from "../mastra/query_agent";
+import { routerAgent } from "../mastra/routerAgent.js";
+import { CreateAgent } from "../mastra/create_agent.js";
+import { UpdateAgent } from "../mastra/update_agent.js";
+import { DeleteAgent } from "../mastra/delete_agent.js";
+import { QueryAgent } from "../mastra/query_agent.js";
 
 type AnyAgent = typeof CreateAgent | typeof UpdateAgent | typeof DeleteAgent | typeof QueryAgent;
 

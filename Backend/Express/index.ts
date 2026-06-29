@@ -3,12 +3,12 @@ dotenv.config();
 import express from "express";
 import cookieParser from "cookie-parser";
 
-import projectRoutes from "./Routes/project";
-import tokenRoutes from "./Routes/authtoken";
-import agentRoutes from "./Routes/agent_route"
-import paymentRoutes from "./Routes/paymentRoutes"
-import sectionRoutes from "./Routes/section";
-import fieldRoutes from "./Routes/fields";
+import projectRoutes from "./Routes/project.js";
+import tokenRoutes from "./Routes/authtoken.js";
+import agentRoutes from "./Routes/agent_route.js"
+import paymentRoutes from "./Routes/paymentRoutes.js"
+import sectionRoutes from "./Routes/section.js";
+import fieldRoutes from "./Routes/fields.js";
 import cors from "cors";
 import type { Request, Response } from "express";
 
