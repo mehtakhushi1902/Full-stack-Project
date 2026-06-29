@@ -1,0 +1,21 @@
+{
+  "imports": {
+    "cors": "npm:cors@^2.8.6",
+    "crypto": "npm:crypto@^1.0.1",
+    "dotenv": "npm:dotenv@^17.4.2",
+    "drizzle-kit": "npm:drizzle-kit@^0.31.10",
+    "drizzle-orm": "npm:drizzle-orm@^0.45.2",
+    "hono": "jsr:@hono/hono@^4.12.26",
+    "pg": "npm:pg@^8.22.0"
+  },
+  "tasks": {
+    "start": "deno run --allow-net --allow-env --allow-read --watch main.ts",
+    "db:generate": "npx drizzle-kit generate",
+    "db:migrate": "npx drizzle-kit migrate",
+    "db:push": "npx drizzle-kit push"
+  },
+  "compilerOptions": {
+    "jsx": "precompile",
+    "jsxImportSource": "hono/jsx"
+  }
+}
