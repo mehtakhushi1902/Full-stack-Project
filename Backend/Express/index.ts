@@ -10,12 +10,17 @@ import paymentRoutes from "./Routes/paymentRoutes.ts"
 import sectionRoutes from "./Routes/section.ts";
 import fieldRoutes from "./Routes/fields.ts";
 import cors from "cors";
+import type { Request, Response } from "express";
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
-app.use("/", tokenRoutes)
+
+app.get("/", (req: Request, res: Response) => {
+  res.json({ message: "Welcome to the API" })
+})
+app.use("/auth", tokenRoutes)
 app.use("/sections", sectionRoutes);
 app.use("/fields", fieldRoutes);
 app.use("/agent", agentRoutes);
