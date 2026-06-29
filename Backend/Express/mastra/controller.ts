@@ -5,6 +5,8 @@ import { DeleteAgent } from "./delete_agent";
 import { QueryAgent } from "./query_agent";
 import { type Request, type Response } from "express";
 
+type AnyAgent = typeof CreateAgent | typeof UpdateAgent | typeof DeleteAgent | typeof QueryAgent;
+
 const chatController = async (req: Request, res: Response) => {
     const { prompt } = req.body;
 
@@ -14,7 +16,7 @@ const chatController = async (req: Request, res: Response) => {
         const decision = routeResponse.text.trim();
         console.log("Router decision:", decision);
 
-        let targetAgent = CreateAgent;
+        let targetAgent: AnyAgent = CreateAgent;
         if (decision.includes("UpdateAgent")) {
             targetAgent = UpdateAgent;
         } else if (decision.includes("DeleteAgent")) {
@@ -57,19 +59,19 @@ const chatController = async (req: Request, res: Response) => {
         // 2. Generate response using the target agent
         const response = await targetAgent.generate(prompt);
 
-        if (response.type === "tool-call") {
-            return res.json({
-                success: false,
-                message: "Tool call is not supported",
-            });
-        }
+        // if (response.type === "tool-call") {
+        //     return res.json({
+        //         success: false,
+        //         message: "Tool call is not supported",
+        //     });
+        // }
 
-        if (response.type === "error") {
-            return res.json({
-                success: false,
-                message: response.error.message,
-            });
-        }
+        // if (response.type === "error") {
+        //     return res.json({
+        //         success: false,
+        //         message: response.error.message,
+        //     });
+        // }
         console.log("message in query", JSON.stringify(response.text))
 
         return res.json({
@@ -89,3 +91,4 @@ const chatController = async (req: Request, res: Response) => {
 }
 
 export default chatController;
+

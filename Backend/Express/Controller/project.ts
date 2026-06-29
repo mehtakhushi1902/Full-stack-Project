@@ -17,7 +17,7 @@ export const UpdateProject = async (
         // }).where(eq(projectsTable.id, Number(req.params.id)));
 
         const { data: updatedProject, error: updateError } =
-            await req.client
+            await req.client!
                 .from("projects")
                 .update({
                     // owner_id: req.user.id,
@@ -47,7 +47,7 @@ export const GetProjects = async (req: Request, res: Response) => {
     try {
         // const result = await req.db?.select().from(projectsTable);
 
-        const { data: getProject, error } = await req.client.from("projects").select("*")
+        const { data: getProject, error } = await req.client!.from("projects").select("*")
 
         console.log("error", error);
         if (error) {
@@ -97,10 +97,10 @@ export const createProject = async (req: Request, res: Response) => {
 
 
         const { data: insertedProject, error: insertError } =
-            await req.client
+            await req.client!
                 .from("projects")
                 .insert({
-                    owner_id: req.user.id,
+                    owner_id: req.user!.id,
                     name
                 })
                 .select()

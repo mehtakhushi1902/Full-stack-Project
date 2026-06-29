@@ -20,7 +20,10 @@ export const supabaseAuthMiddleware = async (req: Request, res: Response, next: 
         console.log("userSdata", data);
 
 
-        req.user = data.user;
+        req.user = {
+            id: data.user.id,
+            email: data.user.email ?? "",
+        };
         req.client = supabaseClient;
         next();
     } catch (error: any) {

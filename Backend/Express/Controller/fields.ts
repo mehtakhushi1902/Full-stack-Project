@@ -1,5 +1,5 @@
+import { eq, asc } from "drizzle-orm";
 import type { Request, Response } from "express";
-import { asc, eq } from "drizzle-orm";
 import { fieldsTable } from "../drizzle/src/db/schema";
 import { db } from "../drizzle/index";
 import { randomUUID } from "crypto";
@@ -20,7 +20,7 @@ export const getField = async (req: Request, res: Response) => {
     const result = await db
       .select()
       .from(fieldsTable)
-      .where(eq(fieldsTable.id, id));
+      .where(eq(fieldsTable.id, String(id)));
     if (result.length === 0) return res.status(404).json({ message: "Field not found" });
     return res.json(result[0]);
   } catch (error: any) {
@@ -50,7 +50,7 @@ export const updateField = async (req: Request, res: Response) => {
     const [updated] = await db
       .update(fieldsTable)
       .set(updates)
-      .where(eq(fieldsTable.id, id))
+      .where(eq(fieldsTable.id, String(id)))
       .returning();
     if (!updated) return res.status(404).json({ message: "Field not found" });
     return res.json(updated);
@@ -65,7 +65,7 @@ export const deleteField = async (req: Request, res: Response) => {
   try {
     const [deleted] = await db
       .delete(fieldsTable)
-      .where(eq(fieldsTable.id, id))
+      .where(eq(fieldsTable.id, String(id)))
       .returning();
     if (!deleted) return res.status(404).json({ message: "Field not found" });
     return res.json(deleted);
@@ -78,7 +78,7 @@ export const deleteField = async (req: Request, res: Response) => {
 export const getAllFieldsBySectionId = async (req: Request, res: Response) => {
   const { sectionId } = req.params;
   try {
-    const result = await db.select().from(fieldsTable).where(eq(fieldsTable.sectionId, sectionId)).orderBy(asc(fieldsTable.order));
+    const result = await db.select().from(fieldsTable).where(eq(fieldsTable.sectionId, String(sectionId))).orderBy(asc(fieldsTable.order));
     return res.json(result);
   } catch (error: any) {
     console.log(error);
@@ -91,7 +91,7 @@ export const reorderFields = async (req: Request, res: Response) => {
     const updates = req.body;
     console.log("updates", updates)
     const results = await Promise.all(
-      updates.map(update =>
+      updates.map((update: { id: string; order: number; sectionId?: string }) =>
         db.update(fieldsTable)
           .set({ order: update.order, ...(update.sectionId ? { sectionId: update.sectionId } : {}) })
           .where(eq(fieldsTable.id, update.id))

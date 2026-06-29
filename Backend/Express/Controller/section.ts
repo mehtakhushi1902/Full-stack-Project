@@ -21,7 +21,7 @@ export const getSection = async (req: Request, res: Response) => {
     const result = await db
       .select()
       .from(sectionsTable)
-      .where(eq(sectionsTable.id, id));
+      .where(eq(sectionsTable.id, String(id)));
     if (result.length === 0) return res.status(404).json({ message: "Section not found" });
     return res.json(result[0]);
   } catch (error: any) {
@@ -51,7 +51,7 @@ export const updateSection = async (req: Request, res: Response) => {
     const [updated] = await db
       .update(sectionsTable)
       .set(updates)
-      .where(eq(sectionsTable.id, id))
+      .where(eq(sectionsTable.id, String(id)))
       .returning();
     if (!updated) return res.status(404).json({ message: "Section not found" });
     return res.json(updated);
@@ -66,7 +66,7 @@ export const deleteSection = async (req: Request, res: Response) => {
   try {
     const [deleted] = await db
       .delete(sectionsTable)
-      .where(eq(sectionsTable.id, id))
+      .where(eq(sectionsTable.id, String(id)))
       .returning();
     if (!deleted) return res.status(404).json({ message: "Section not found" });
     return res.json(deleted);
@@ -81,7 +81,7 @@ export const reorderSections = async (req: Request, res: Response) => {
   try {
     const updates = req.body;
     const results = await Promise.all(
-      updates.map(update =>
+      updates.map((update: { id: string; order: number }) =>
         db.update(sectionsTable)
           .set({ order: update.order })
           .where(eq(sectionsTable.id, update.id))

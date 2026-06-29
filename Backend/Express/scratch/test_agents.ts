@@ -6,6 +6,8 @@ import { UpdateAgent } from "../mastra/update_agent";
 import { DeleteAgent } from "../mastra/delete_agent";
 import { QueryAgent } from "../mastra/query_agent";
 
+type AnyAgent = typeof CreateAgent | typeof UpdateAgent | typeof DeleteAgent | typeof QueryAgent;
+
 async function runTest(prompt: string) {
     console.log(`\n========================================`);
     console.log(`Prompt: "${prompt}"`);
@@ -14,7 +16,7 @@ async function runTest(prompt: string) {
         const decision = routeResponse.text.trim();
         console.log(`Router decision: "${decision}"`);
 
-        let targetAgent = CreateAgent;
+        let targetAgent: AnyAgent = CreateAgent;
         if (decision.includes("UpdateAgent")) {
             targetAgent = UpdateAgent;
         } else if (decision.includes("DeleteAgent")) {

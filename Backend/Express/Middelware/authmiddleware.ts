@@ -1,9 +1,9 @@
 import type { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
-import { usersTable } from "../drizzle/src/db/schema.ts";
+import { usersTable } from "../drizzle/src/db/schema";
 import { eq } from "drizzle-orm";
 
-import { db } from "../drizzle/index.ts";
+import { db } from "../drizzle/index";
 
 interface JwtPayload {
     sub: string;
@@ -53,7 +53,7 @@ export const authMiddleware = async (
 };
 
 export const generateToken = (
-    id: number,
+    id: string,
     email: string,
     // role: string
 ): string => {

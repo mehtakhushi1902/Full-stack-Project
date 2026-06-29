@@ -1,6 +1,6 @@
 import type { Request, Response, NextFunction } from "express";
 import { drizzle } from "drizzle-orm/node-postgres";
-import { pool } from "../drizzle/index.ts";
+import { pool } from "../drizzle/index";
 export const rlsMiddleware = async (
     req: Request,
     res: Response,
