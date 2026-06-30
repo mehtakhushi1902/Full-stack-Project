@@ -161,7 +161,6 @@ export const FormFieldPreview: React.FC<FormFieldPreviewProps> = ({
   onChange
 }) => {
   const hasError = !!error;
-  const isFullWidth = field.type === 'textarea' || field.type === 'checkbox';
 
   return (
     <Sheet

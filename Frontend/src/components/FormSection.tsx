@@ -31,7 +31,6 @@ export const FormSection: React.FC<FormSectionProps> = ({
   onDeleteField,
   onDuplicateField,
   isChatOpen,
-  onFetchData,
   fetchFieldsBySectionID,
 }) => {
   const {

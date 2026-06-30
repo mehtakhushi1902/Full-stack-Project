@@ -440,7 +440,7 @@ export const useFormBuilder = () => {
   }, []);
 
 
-  const handleDeleteField = useCallback(async (fieldId: string, secId: string) => {
+  const handleDeleteField = useCallback(async (fieldId: string) => {
     try {
       const response = await fetch(`${baseUrl}/fields/${fieldId}`, {
         method: 'DELETE',

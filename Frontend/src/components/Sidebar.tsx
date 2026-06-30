@@ -6,7 +6,6 @@ import {
   TrendingUp,
   MessageSquare,
   Settings,
-  LogOut,
   X
 } from 'lucide-react';
 import { Button } from './ui/button';

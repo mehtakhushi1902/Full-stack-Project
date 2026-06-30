@@ -102,7 +102,7 @@ const FormBuilder: React.FC = () => {
     const {
         sections,
         fields,
-        setFields,
+        // setFields,
         selectedElement,
         isPreviewMode,
         setIsPreviewMode,
@@ -606,14 +606,14 @@ const FormBuilder: React.FC = () => {
                                                         </Button>
                                                         <Button
                                                             variant="destructive"
-                                                            onClick={() => handleDeleteField(selectedField.id, selectedElement.sectionId)}
+                                                            onClick={() => handleDeleteField(selectedField.id)}
                                                             className="flex items-center justify-center gap-1.5 py-2 text-2xs-plus"
                                                         >
                                                             <Trash2 className="w-3.5 h-3.5" />
                                                             <span>Delete Field</span>
                                                         </Button>
 
-                                                         <Button
+                                                        <Button
                                                             variant="destructive"
                                                             onClick={() => saveSelectedElement()}
                                                             className="flex items-center justify-center gap-1.5 py-2 text-2xs-plus"

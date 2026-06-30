@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import {
-  FileSpreadsheet
-} from 'lucide-react';
+
 
 import { Sidebar } from './components/Sidebar';
 import { Header } from './components/Header';
@@ -13,18 +11,6 @@ import { Reactquery } from './Layouts/Reactquery';
 import { Payment } from './Layouts/payment';
 import { PaymentSuccess } from './Layouts/PaymentSuccess';
 import { PaymentFail } from './Layouts/PaymentFail';
-
-const PlaceholderPage = ({ pageName }: { pageName: string }) => (
-  <div className="flex flex-col items-center justify-center h-placeholder-page text-center max-w-md mx-auto">
-    <div className="w-16 h-16 bg-metric-purple-bg rounded-2xl flex items-center justify-center text-brand-purple mb-4">
-      <FileSpreadsheet className="w-8 h-8" />
-    </div>
-    <h2 className="text-xl font-bold text-brand-dark mb-2 capitalize">{pageName} Page</h2>
-    <p className="text-sm text-brand-gray">
-      This page layout is currently under construction. Active development is focused on the pixel-perfect implementation of the core Sales Dashboard.
-    </p>
-  </div>
-);
 
 function AppLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
