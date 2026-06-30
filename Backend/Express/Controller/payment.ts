@@ -5,6 +5,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 export const makePayment = async (req: Request, res: Response) => {
     try {
+        const baseUrl = process.env.FRONTEND_URL;
         const { products } = req.body;
 
         const lineItems = products.map((product: any) => ({
@@ -21,8 +22,8 @@ export const makePayment = async (req: Request, res: Response) => {
         const session = await stripe.checkout.sessions.create({
             line_items: lineItems,
             mode: "payment",
-            success_url: "http://localhost:5173/payment/success",
-            cancel_url: "http://localhost:5173/payment/cancel",
+            success_url: `${baseUrl}/payment/success`,
+            cancel_url: `${baseUrl}/payment/cancel`,
         });
 
         console.log("session", session)
