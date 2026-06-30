@@ -20,7 +20,6 @@ import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Sheet } from './ui/sheet';
 
 interface FormFieldProps {
   field: Field;
@@ -163,9 +162,9 @@ export const FormFieldPreview: React.FC<FormFieldPreviewProps> = ({
   const hasError = !!error;
 
   return (
-    <Sheet
-    // id={`preview_field_${field.id}`}
-    // className={`flex flex-col gap-1.5 ${isFullWidth ? 'md:col-span-2' : 'col-span-1'}`}
+    <div
+      id={`preview_field_${field.id}`}
+      className="flex flex-col gap-1.5 col-span-1"
     >
       {field.type !== 'checkbox' && (
         <Label htmlFor={`input_${field.id}`}>
@@ -263,11 +262,11 @@ export const FormFieldPreview: React.FC<FormFieldPreviewProps> = ({
       )}
 
       {hasError && (
-        <span className="text-2xs text-red-500 font-bold mt-1">
+        <span role="alert" className="text-2xs text-red-500 font-bold mt-1 error-message">
           {error}
         </span>
       )}
-    </Sheet>
+    </div>
   );
 };
 

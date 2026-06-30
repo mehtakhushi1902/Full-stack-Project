@@ -377,7 +377,7 @@ export const useFormBuilder = () => {
       setQuickFieldLabel('');
       setQuickFieldRequired(false);
       setSelectedElement({ type: 'field', sectionId: quickFieldSection, fieldId: created.id });
-      setActivePanelTab('properties');
+      // setActivePanelTab('properties');
     } catch (err) {
       console.error(err);
     }
@@ -505,21 +505,37 @@ export const useFormBuilder = () => {
   const handlePreviewSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const errors: { [key: string]: string } = {};
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // sections.forEach((sec) => {
-    // sec.fields.forEach((field) => {
-    //   const val = formValues[field.id];
-    //   if (field.required) {
-    //     if (field.type === 'checkbox') {
-    //       if (!val) errors[field.id] = 'This agreement is required.';
-    //     } else {
-    //       if (val === undefined || val === null || String(val).trim() === '') {
-    //         errors[field.id] = `${field.label} is required.`;
-    //       }
-    //     }
-    //   });
-    // });
-    // }) ;
+    fields.forEach((field) => {
+      const val = formValues[field.id];
+      const rawValue = typeof val === 'string' ? val.trim() : val;
+      const hasValue = rawValue !== undefined && rawValue !== null && rawValue !== '';
+
+      if (field.required) {
+        if (field.type === 'checkbox') {
+          if (!val) {
+            errors[field.id] = `${field.label} is required.`;
+          }
+        } else if (!hasValue) {
+          errors[field.id] = `${field.label} is required.`;
+        }
+      }
+
+      if (hasValue) {
+        if (field.type === 'email' && !emailPattern.test(String(rawValue))) {
+          errors[field.id] = `Please enter a valid email.`;
+        }
+
+        if (field.type === 'number' && Number.isNaN(Number(String(rawValue)))) {
+          errors[field.id] = `Please enter a valid number.`;
+        }
+
+        if (field.type === 'date' && Number.isNaN(Date.parse(String(rawValue)))) {
+          errors[field.id] = `Please enter a valid date.`;
+        }
+      }
+    });
 
     if (Object.keys(errors).length > 0) {
       setFormErrors(errors);

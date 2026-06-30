@@ -6,6 +6,12 @@
 				"@playwright/mcp@latest"
 			],
 			"type": "stdio"
+		},
+		"render": {
+			"url": "https://mcp.render.com/mcp",
+			"headers": {
+				"Authorization": "Bearer rnd_5ftBiWDEomELZ30DadWm2ibpIsCZ"
+			}
 		}
 	},
 	"inputs": []

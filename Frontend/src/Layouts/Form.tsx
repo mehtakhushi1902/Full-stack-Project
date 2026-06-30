@@ -114,6 +114,8 @@ const FormBuilder: React.FC = () => {
         submittedData,
         setSubmittedData,
         activePanelTab,
+        setFormErrors,
+        setFormValues,
         setActivePanelTab,
 
         newSecTitle,
@@ -762,6 +764,8 @@ const FormBuilder: React.FC = () => {
                                     type="button"
                                     onClick={() => {
                                         setSubmittedData(null);
+                                        setFormValues({});
+                                        setFormErrors({});
                                     }}
                                     className="px-5 py-3 text-xs font-bold"
                                 >
@@ -828,7 +832,7 @@ const FormBuilder: React.FC = () => {
                                                             {field.label}
                                                         </TableCell>
 
-                                                        <TableCell className="text-brand-gray break-all">\
+                                                        <TableCell className="text-brand-gray break-all">
                                                             {stringVal}
                                                         </TableCell>
                                                     </TableRow>
