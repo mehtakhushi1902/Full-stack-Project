@@ -74,8 +74,7 @@ export const useFormBuilder = () => {
   const selectedSection = sections.find(s => s.id === selectedElement?.sectionId) || null;
   const selectedField = fields.find(f => f.id === selectedElement?.fieldId) || null;
 
-  const baseUrlHono = "http://localhost:8000/hono"
-  const baseUrl = "http://localhost:3000"
+  const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
   useEffect(() => {
     if (sections.length > 0 && (!quickFieldSection || !sections.some(s => s.id === quickFieldSection))) {
@@ -95,8 +94,9 @@ export const useFormBuilder = () => {
       if (!sectionsRes.ok || !fieldsRes.ok) throw new Error('Failed to load data');
       const sectionsData = await sectionsRes.json();
       const fieldsData = await fieldsRes.json();
-      setSections(sectionsData);
-      setFields(fieldsData);
+      // Handle both raw array responses and { data: [] } envelope shapes
+      setSections(Array.isArray(sectionsData) ? sectionsData : (sectionsData?.data ?? []));
+      setFields(Array.isArray(fieldsData) ? fieldsData : (fieldsData?.data ?? []));
     } catch (err) {
       console.error(err);
     }
@@ -113,12 +113,13 @@ export const useFormBuilder = () => {
       }
 
       const fieldsData = await fieldsRes.json();
+      const fieldsArray = Array.isArray(fieldsData) ? fieldsData : (fieldsData?.data ?? []);
 
       setFields((prev) => [
         ...prev.filter(
           (field) => field.sectionId !== sectionId
         ),
-        ...fieldsData,
+        ...fieldsArray,
       ]);
     } catch (err) {
       console.error(err);

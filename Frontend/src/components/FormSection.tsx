@@ -56,8 +56,6 @@ export const FormSection: React.FC<FormSectionProps> = ({
   };
 
   const isSectionSelected = selectedElement?.type === 'section' && selectedElement.sectionId === section.id;
-  const baseUrl = "http://localhost:3000"
-
 
   return (
     <Card

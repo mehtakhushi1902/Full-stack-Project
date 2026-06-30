@@ -6,6 +6,8 @@ export const Payment = () => {
 
     const makePayment = async () => {
 
+        const baseUrl = import.meta.env.VITE_BACKEND_URL;
+
         const headers = {
             "Content-Type": "application/json"
         }
@@ -33,7 +35,7 @@ export const Payment = () => {
             throw new Error("Stripe failed to initialize");
         }
 
-        const response = await fetch("http://localhost:3000/payments", {
+        const response = await fetch(`${baseUrl}/payments`, {
             method: "POST",
             headers,
             body: JSON.stringify(body),

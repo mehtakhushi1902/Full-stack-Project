@@ -24,6 +24,8 @@ interface ChatBotProps {
   onClose: () => void;
 }
 export const ChatBot: React.FC<ChatBotProps> = ({ isOpen, onClose }) => {
+
+  const baseUrl = import.meta.env.VITE_BACKEND_URL;
   const [messages, setMessages] = useState<Message[]>([
     {
       role: 'assistant',
@@ -48,7 +50,7 @@ export const ChatBot: React.FC<ChatBotProps> = ({ isOpen, onClose }) => {
     setMessages((prev) => [...prev, { role: 'user', content: userMessage }]);
     setIsLoading(true);
     try {
-      const response = await fetch('http://localhost:3000/agent/chat', {
+      const response = await fetch(`${baseUrl}/agent/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt: userMessage }),
